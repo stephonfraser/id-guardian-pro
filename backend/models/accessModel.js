@@ -1,20 +1,25 @@
 const mongoose = require("mongoose");
 
-const userSchema = mongoose.Schema({
+const acessSchema = mongoose.Schema({
+    account_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: "Account",
+    },
     name: {
         type: String,
         required: [true, "Please add the user fullname"],
     },
-    username: {
+    accessCode: {
         type: String,
         required: [true, "Please add the user username"],
     }, 
-    email: {
+    details: {
         type: String,
-        required: [true, "Please add the user email address"],
+        required: [false],
     },
 }, {
     timestamps: true
 });
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model("Access", acessSchema);
